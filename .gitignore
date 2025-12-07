@@ -17,6 +17,10 @@ coverage.*
 *.coverprofile
 profile.cov
 
+# test build
+plato
+chat.log
+
 # Dependency directories (remove the comment below to include it)
 # vendor/
 

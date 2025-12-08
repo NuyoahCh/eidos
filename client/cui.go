@@ -11,12 +11,14 @@ import (
 	"time"
 )
 
+// 初始化 cui 客户端
 func init() {
 	rand.Seed(time.Now().UnixNano())
 	verbose = true
 	step = 1
 }
 
+// 相关参数
 var (
 	buf     string
 	chat    *sdk.Chat
@@ -24,6 +26,7 @@ var (
 	verbose bool
 )
 
+// 设置头文本
 func setHeadText(g *gocui.Gui, msg string) {
 	v, err := g.View("head")
 	if err == nil {
@@ -71,6 +74,7 @@ func doRecv(g *gocui.Gui) {
 	g.Close()
 }
 
+// 退出 cui
 func quit(g *gocui.Gui, v *gocui.View) error {
 	chat.Close()
 	ov, _ := g.View("out")
@@ -79,6 +83,7 @@ func quit(g *gocui.Gui, v *gocui.View) error {
 	return gocui.ErrQuit
 }
 
+// 显示消息流
 func doSay(g *gocui.Gui, cv *gocui.View) {
 	v, err := g.View("out")
 	if cv != nil && err == nil {
@@ -145,6 +150,7 @@ func viewOutput(g *gocui.Gui, x0, y0, x1, y1 int) error {
 	}
 	return nil
 }
+
 func viewInput(g *gocui.Gui, x0, y0, x1, y1 int) error {
 	if v, err := g.SetView("main", x0, y0, x1, y1); err != nil {
 		if err != gocui.ErrUnknownView {
